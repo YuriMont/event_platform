@@ -1,15 +1,14 @@
-import { Document, model, models } from "mongoose";
-import { Schema } from "mongoose";
+import mongoose from "mongoose";
 
-export interface ICategory extends Document {
+export interface ICategory extends mongoose.Document {
   _id: string;
   name: string;
 }
 
-const CategorySchema = new Schema({
+const CategorySchema = new mongoose.Schema({
   name: { type: String, required: true, unique: true },
 });
 
-const Category = models.Category || model("Category", CategorySchema);
+const Category = mongoose.models.Category || mongoose.model("Category", CategorySchema);
 
 export default Category;
